@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6254811721100295080}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.42, y: 2.87, z: -0.01}
-  m_LocalScale: {x: 1.2, y: 1.8, z: 1.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6254811719291424136}
@@ -97,12 +97,12 @@ NavMeshAgent:
   m_GameObject: {fileID: 6254811721100295080}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.50000006
-  m_Speed: 11
+  m_Radius: 0.5
+  m_Speed: 5
   m_Acceleration: 12
   avoidancePriority: 50
-  m_AngularSpeed: 10000
-  m_StoppingDistance: 0
+  m_AngularSpeed: 7
+  m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -135,11 +135,10 @@ MonoBehaviour:
   walkPoint: {x: 0, y: 0, z: 0}
   walkPoingRange: 5
   timeBetweenAttacks: 2
-  sightRange: 12
+  sightRange: 99999
   attackRange: 0.5
   playerInSightRange: 0
   playerInAttackRange: 0
-  playerDamage: {fileID: 0}
   manSkin: {fileID: 6254811719291875546}
 --- !u!64 &6254811721100295086
 MeshCollider:
@@ -188,15 +187,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 427610, guid: 1d3b1a1513de66247974634911345b98, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 427610, guid: 1d3b1a1513de66247974634911345b98, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 427610, guid: 1d3b1a1513de66247974634911345b98, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 427610, guid: 1d3b1a1513de66247974634911345b98, type: 3}
       propertyPath: m_LocalPosition.x

@@ -8,7 +8,7 @@ public class WallLamp : MonoBehaviour
     public float intensity;
     public bool on;
 
-    public static float electricalPower = 1;
+    //public static float electricalPower = 1;
 
     bool onLastUpdate;
 
@@ -23,7 +23,7 @@ public class WallLamp : MonoBehaviour
         if (on == true)
         {
             myLight.color = color;
-            myLight.intensity = intensity * electricalPower;
+            myLight.intensity = intensity;
         }
 
         else
@@ -35,12 +35,12 @@ public class WallLamp : MonoBehaviour
         {
             if (on == true)
             {
-                electricalPower = electricalPower - 0.2f;
+                //electricalPower = electricalPower - 0.2f;
             }
 
             else
             {
-                electricalPower = electricalPower + 0.2f;
+                //electricalPower = electricalPower + 0.2f;
             }
         }
 
