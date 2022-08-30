@@ -24,7 +24,11 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
+<<<<<<< Updated upstream
   controlID: 715
+=======
+  controlID: 119
+>>>>>>> Stashed changes
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -142,7 +146,11 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
+<<<<<<< Updated upstream
   controlID: 716
+=======
+  controlID: 120
+>>>>>>> Stashed changes
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +175,11 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
+<<<<<<< Updated upstream
   controlID: 717
+=======
+  controlID: 121
+>>>>>>> Stashed changes
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,9 +238,15 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< Updated upstream
       m_SelectedIDs: 2a780000
       m_LastClickedID: 0
       m_ExpandedIDs: b072ffff2878ffffa280ffffc684ffff408dffff6491ffff1c9effff7ea7ffff34b0ffffd6b8ffff78c1ffff1acaffffbcd2ffff46dbffffd0e3ffff5aecffff24f5ffff14fbffff
+=======
+      m_SelectedIDs: 5e780000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 14fbffff
+>>>>>>> Stashed changes
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -505,9 +523,15 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< Updated upstream
     m_Target: {x: -17.865587, y: -1.8697715, z: 11.951299}
     speed: 2
     m_Value: {x: -17.865587, y: -1.8697715, z: 11.951299}
+=======
+    m_Target: {x: 5.6087584, y: -1.6189959, z: 21.779984}
+    speed: 2
+    m_Value: {x: 5.6087584, y: -1.6189959, z: 21.779984}
+>>>>>>> Stashed changes
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 2
@@ -554,13 +578,23 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
+<<<<<<< Updated upstream
     m_Target: {x: -0.092687, y: 0.10230995, z: -0.009553861, w: -0.99040896}
     speed: 2
     m_Value: {x: -0.092687, y: 0.10230994, z: -0.009553861, w: -0.9904089}
+=======
+    m_Target: {x: -0.023896066, y: -0.4017565, z: 0.010516174, w: -0.9154536}
+    speed: 2
+    m_Value: {x: -0.025200156, y: -0.40719593, z: 0.011269541, w: -0.9129236}
+>>>>>>> Stashed changes
   m_Size:
     m_Target: 1.0694422
     speed: 2
+<<<<<<< Updated upstream
     m_Value: 1.0694422
+=======
+    m_Value: 4.850487
+>>>>>>> Stashed changes
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -654,22 +688,36 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
+<<<<<<< Updated upstream
     - Assets/Scenes
+=======
+    - Assets/Unitys startscene Playground
+>>>>>>> Stashed changes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
+<<<<<<< Updated upstream
   - Assets/Scenes
+=======
+  - Assets/Unitys startscene Playground
+>>>>>>> Stashed changes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\ande68m6\GitHub Repositories\Sindsygehospital
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< Updated upstream
     m_SelectedIDs: c8770000
     m_LastClickedID: 30664
     m_ExpandedIDs: 00000000e675000000ca9a3bffffff7f
+=======
+    m_SelectedIDs: 88760000
+    m_LastClickedID: 30344
+    m_ExpandedIDs: 000000006c76000000ca9a3b
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -697,7 +745,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< Updated upstream
     m_ExpandedIDs: 00000000e675000000ca9a3bffffff7f
+=======
+    m_ExpandedIDs: 000000006c760000
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -722,8 +774,13 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
+<<<<<<< Updated upstream
     m_SelectedInstanceIDs: 2a780000
     m_LastClickedInstanceID: 30762
+=======
+    m_SelectedInstanceIDs: 5e780000
+    m_LastClickedInstanceID: 30814
+>>>>>>> Stashed changes
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
@@ -799,8 +856,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1172
     y: 0
+<<<<<<< Updated upstream
     width: 364
     height: 730.8
+=======
+    width: 453
+    height: 947
+>>>>>>> Stashed changes
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 13}
