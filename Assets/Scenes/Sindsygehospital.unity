@@ -372,7 +372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &39868659
 Transform:
   m_ObjectHideFlags: 0
@@ -3384,6 +3384,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Lamp (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962809001203160552, guid: d708d69d355293c44b74fe1f83299bc8,
+        type: 3}
+      propertyPath: intensity
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d708d69d355293c44b74fe1f83299bc8, type: 3}
