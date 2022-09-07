@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 5719
+  controlID: 6688
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 5720
+  controlID: 6689
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 5721
+  controlID: 6690
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,8 +226,8 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: f45affff
-      m_LastClickedID: -42252
+      m_SelectedIDs: 
+      m_LastClickedID: 0
       m_ExpandedIDs: 825affff8a5affff945affffac5afffff45affffe45dffff6e66ffffd06bffff7875ffff1a7effff6a82ffff808bffff2294ffffc49cffff7aa5ffff1caeffffbeb6ffff60bfffff02c8ffffa4d0ffff04d5ffffc2deffff10fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -505,9 +505,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -6.4709487, y: -3.4280348, z: 16.391668}
+    m_Target: {x: 0.87426996, y: 74.14139, z: 11.582884}
     speed: 2
-    m_Value: {x: -6.4709487, y: -3.4280348, z: 16.391668}
+    m_Value: {x: 0.87426996, y: 74.14139, z: 11.582884}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 2
@@ -554,9 +554,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.10285167, y: 0.85267264, z: -0.18335314, w: -0.47829255}
+    m_Target: {x: 0.0042134305, y: 0.743622, z: -0.66857994, w: 0.004684881}
     speed: 2
-    m_Value: {x: -0.10285109, y: 0.85266787, z: -0.18335211, w: -0.47828987}
+    m_Value: {x: 0.0042134305, y: 0.743622, z: -0.66857994, w: 0.004684881}
   m_Size:
     m_Target: 3.1146684
     speed: 2
@@ -654,21 +654,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\ande68m6\GitHub Repositories\Sindsygehospital
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 31}
-    m_SelectedIDs: 38780000
-    m_LastClickedID: 30776
+    m_SelectedIDs: 74760000
+    m_LastClickedID: 30324
     m_ExpandedIDs: 000000007476000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -722,8 +722,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: f45affff
-    m_LastClickedInstanceID: -42252
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
@@ -844,7 +844,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 92.79999
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
