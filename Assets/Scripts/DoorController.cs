@@ -17,8 +17,6 @@ public class DoorController : MonoBehaviour // På Playeren
         {
             var obj = doorObjs[i];
 
-
-
             var door = obj.GetComponent<DoorToggle>();
             door.id = door.name[11] - '0';
 
@@ -42,8 +40,6 @@ public class DoorController : MonoBehaviour // På Playeren
             return DoorState.Closed;
         }
 
-
-
         return doors[id].state;
     }
 
@@ -62,8 +58,6 @@ public class DoorController : MonoBehaviour // På Playeren
             return;
         }
 
-
-
         GetDoor(id).Toggle();
     }
 
@@ -75,8 +69,6 @@ public class DoorController : MonoBehaviour // På Playeren
         {
             return door;
         }
-
-
 
         return null;
     }
