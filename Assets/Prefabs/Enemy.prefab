@@ -124,19 +124,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countDown: 0
   agent: {fileID: 6254811721100295085}
-  player: {fileID: 0}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 576
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 256
   StillTimer: 0
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPoingRange: 5
+  walkRadius: 20
+  minStillTime: 3
+  maxStillTime: 5
   timeBetweenAttacks: 2
-  sightRange: 99999
-  attackRange: 0.5
+  sightRange: 9999
+  attackRange: 0.7
   playerInSightRange: 0
   playerInAttackRange: 0
   manSkin: {fileID: 6254811719291875546}
@@ -245,6 +246,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 75d3a58b3d7879f41926561701407a48, type: 2}
+    - target: {fileID: 9526514, guid: 1d3b1a1513de66247974634911345b98, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d3b1a1513de66247974634911345b98, type: 3}
 --- !u!4 &6254811719291424136 stripped

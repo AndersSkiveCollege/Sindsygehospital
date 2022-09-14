@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
     public float countDown = 5;
     public NavMeshAgent agent;
 
-    public Transform player;
+    Transform player;
 
     public LayerMask whatIsGround, whatIsPlayer;
 
@@ -19,7 +19,10 @@ public class EnemyAI : MonoBehaviour
     //patroling
     public Vector3 walkPoint;
     bool walkPointSet;
-    public float walkPoingRange;
+    public float walkRadius;
+    Vector3 randomDirection;
+    public float minStillTime;
+    public float maxStillTime;
 
     //attacking
     public float timeBetweenAttacks;
@@ -30,17 +33,24 @@ public class EnemyAI : MonoBehaviour
     public bool playerInSightRange, playerInAttackRange;
 
     //switch
-    private int statement;
+
+    public enum states
+        {
+        patrol, chase, attack
+        }
+    public states myState = new states();
 
     //damage
     //public GameObject playerDamage;
     public GameObject manSkin;
+    Animator anim;
 
     private void Awake()
     {
         //Getiing player transform and agent nav-mesh agent
         player = GameObject.Find("PlayerCapsule").transform;
         agent = GetComponent<NavMeshAgent>();
+        anim = manSkin.GetComponent<Animator>();
     }
 
 
@@ -52,122 +62,95 @@ public class EnemyAI : MonoBehaviour
         //state-machine controller
         if (!playerInSightRange && !playerInAttackRange)
         {
-            statement = 1;
+            myState = states.patrol;
         }
         if (playerInSightRange && !playerInAttackRange)
         {
-            statement = 2;
+            myState = states.chase;
         }
         if (playerInSightRange && playerInAttackRange)
         {
-            statement = 3;
+            myState = states.attack;
         }
 
-        switch (statement)
+        switch (myState)
         {
-            case 1:
+            case states.patrol:
                 patroling();
                 break;
 
-            case 2:
+            case states.chase:
                 chasePlayer();
                 break;
 
-            case 3:
+            case states.attack:
                 attackPlayer();
                 break;
         }
         if (StillTimer >= 0)
         {
             StillTimer = StillTimer - Time.deltaTime;
-        }
-        if (StillTimer <= 0)
-        {
-            manSkin.GetComponent<Animator>().Play("Walk");
+            anim.SetInteger("Movement", 0);
         }
     }
 
 
     private void patroling()
     {
+        anim.SetInteger("Movement", 1);
         //walk to walkpoint
         if (!walkPointSet)
         {
+            StillTimer = Random.Range(minStillTime, maxStillTime);
             SearchWalkPoint();
-            StillTimer = Random.Range(1,10);
         }
 
         if (walkPointSet & StillTimer <= 0)
+        {
             agent.SetDestination(walkPoint);
 
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+        }
+
+        float distanceToWalkPoint = Vector3.Distance(transform.position, walkPoint);
 
         //walkpoin reached
-        if (distanceToWalkPoint.magnitude < 1f)
+        if (distanceToWalkPoint < 1)
             walkPointSet = false;
-
-       
     }
     private void SearchWalkPoint()
     {
-        //calculate random point in range
-        randomZ = Random.Range(-walkPoingRange, walkPoingRange);
-        randomX = Random.Range(-walkPoingRange, walkPoingRange);
-
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-       
-        if (Physics.Raycast(walkPoint, -transform.up, 2f))
-        {
-            walkPointSet = true;
-        }
-        
-        //start countdown to new walkpoint (if former walkpoint was unreachable)
-        StartCoroutine(countDownRoutine());
-    }
-    //walkpoint countdown
-    private IEnumerator countDownRoutine()
-    {
-        while (true)
-        {
-            newWalkPoint();
-            yield return new WaitForSeconds(5);
-        }
+        walkPointSet = true;
+        newWalkPoint();
     }
     //placing new walkpoint
     private void newWalkPoint()
     {
-        randomZ = Random.Range(-walkPoingRange, walkPoingRange);
-        randomX = Random.Range(-walkPoingRange, walkPoingRange);
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        randomDirection = Random.insideUnitSphere * walkRadius;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomDirection, out hit, walkRadius, 1);
+        walkPoint = hit.position;
     }
     private void chasePlayer()
     {
         //placing destination to the player
         agent.SetDestination(player.position);
+        anim.SetInteger("Movement", 1);
     }
     private void attackPlayer()
     {
         //stopping up and attacking
         agent.SetDestination(transform.position);
-
-       // transform.LookAt(player.position + new Vector3(0,1,0));
-
+        anim.SetInteger("Movement", 0);
         if (!alreadyAttacked)
         {
-            //damaging player
-            //Invoke(nameof(DamagePlayer), 0.5f);
             //attack cooldown
-            alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
-            manSkin.GetComponent<Animator>().Play("Punch");
+            anim.SetInteger("Movement", 2);
+            alreadyAttacked = true;
         }
     }
-    private void DamagePlayer()
-    {
-        //activating damage code in playermovement script
-        //playerDamage.GetComponent<PlayerMovement>().TakeDamage();
-    }
+
     private void ResetAttack()
     {
         alreadyAttacked = false;
