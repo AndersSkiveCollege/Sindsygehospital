@@ -210,6 +210,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swing Door 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6070772379033159591, guid: d58646895e5015243853c60320332da4,
+        type: 3}
+      propertyPath: m_Extents.x
+      value: 2.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070772379033159591, guid: d58646895e5015243853c60320332da4,
+        type: 3}
+      propertyPath: m_Extents.y
+      value: 2.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070772379033159591, guid: d58646895e5015243853c60320332da4,
+        type: 3}
+      propertyPath: m_Extents.z
+      value: 0.835
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d58646895e5015243853c60320332da4, type: 3}
 --- !u!4 &7596702239668059671 stripped
