@@ -8,9 +8,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerClick : MonoBehaviour // På Playeren
 {
-    public Material[] Kamera;
-    public Renderer[] Skaerm;
-
+    public Material[] materials;
+    public Renderer[] screens;
+    public Camera[] cameras;
+    public List<Camera> enabledCameras = new List<Camera>();
+    public Queue<Camera> queueofEnabledCameras = new Queue<Camera>();
+    public Light[] screenLights;
     Ray ray;
     //public GameObject door;
 
@@ -18,7 +21,13 @@ public class PlayerClick : MonoBehaviour // På Playeren
 
     DoorController doorController;
 
-
+    private void Awake()
+    {
+        foreach (Camera cam in cameras)
+        {
+            cam.enabled = false;
+        }
+    }
 
     void Start()
     {
@@ -43,152 +52,200 @@ public class PlayerClick : MonoBehaviour // På Playeren
         switch (hit.collider.gameObject.name)
         {
             case "KnapS1K1":
-                Skaerm[0].material.CopyPropertiesFromMaterial(Kamera[1]);
+                TurnSelectedCamerasOnAndDisableTheRest(0,0,1);
                 break;
 
             case "KnapS1K2":
-                Skaerm[0].material.CopyPropertiesFromMaterial(Kamera[2]);
+                TurnSelectedCamerasOnAndDisableTheRest(1, 0, 2);
                 break;
 
             case "KnapS1K3":
-                Skaerm[0].material.CopyPropertiesFromMaterial(Kamera[3]);
+                TurnSelectedCamerasOnAndDisableTheRest(2, 0, 3);
                 break;
 
             case "KnapS1K4":
-                Skaerm[0].material.CopyPropertiesFromMaterial(Kamera[4]);
+                TurnSelectedCamerasOnAndDisableTheRest(3, 0, 4);
                 break;
 
             case "KnapS1K5":
-                Skaerm[0].material.CopyPropertiesFromMaterial(Kamera[5]);
+                TurnSelectedCamerasOnAndDisableTheRest(4, 0, 5);
                 break;
 
             case "KnapS1K6":
-                Skaerm[0].material.CopyPropertiesFromMaterial(Kamera[6]);
+                TurnSelectedCamerasOnAndDisableTheRest(5, 0, 6);
                 break;
 
             case "KnapS1K7":
-                Skaerm[0].material.CopyPropertiesFromMaterial(Kamera[7]);
+                TurnSelectedCamerasOnAndDisableTheRest(6, 0, 7);
                 break;
 
             case "KnapS1K8":
-                Skaerm[0].material.CopyPropertiesFromMaterial(Kamera[8]);
+                TurnSelectedCamerasOnAndDisableTheRest(7, 0, 8);
                 break;
 
             case "KnapS1K9":
-                Skaerm[0].material.CopyPropertiesFromMaterial(Kamera[9]);
+                TurnSelectedCamerasOnAndDisableTheRest(8, 0, 9);
                 break;
 
             case "KnapS1K10":
-                Skaerm[0].material.CopyPropertiesFromMaterial(Kamera[10]);
+                TurnSelectedCamerasOnAndDisableTheRest(9, 0, 10);
                 break;
 
             case "KnapS1K11":
-                Skaerm[0].material.CopyPropertiesFromMaterial(Kamera[11]);
+                TurnSelectedCamerasOnAndDisableTheRest(10, 0, 11);
                 break;
 
             case "KnapS2K1":
-                Skaerm[1].material.CopyPropertiesFromMaterial(Kamera[1]);
+                TurnSelectedCamerasOnAndDisableTheRest(0, 1, 1);
                 break;
 
             case "KnapS2K2":
-                Skaerm[1].material.CopyPropertiesFromMaterial(Kamera[2]);
+                TurnSelectedCamerasOnAndDisableTheRest(1, 1, 2);
                 break;
 
             case "KnapS2K3":
-                Skaerm[1].material.CopyPropertiesFromMaterial(Kamera[3]);
+                TurnSelectedCamerasOnAndDisableTheRest(2, 1, 3);
                 break;
 
             case "KnapS2K4":
-                Skaerm[1].material.CopyPropertiesFromMaterial(Kamera[4]);
+                TurnSelectedCamerasOnAndDisableTheRest(3, 1, 4);
                 break;
 
             case "KnapS2K5":
-                Skaerm[1].material.CopyPropertiesFromMaterial(Kamera[5]);
+                TurnSelectedCamerasOnAndDisableTheRest(4, 1, 5);
                 break;
 
             case "KnapS2K6":
-                Skaerm[1].material.CopyPropertiesFromMaterial(Kamera[6]);
+                TurnSelectedCamerasOnAndDisableTheRest(5, 1, 6);
                 break;
 
             case "KnapS2K7":
-                Skaerm[1].material.CopyPropertiesFromMaterial(Kamera[7]);
+                TurnSelectedCamerasOnAndDisableTheRest(6, 1, 7);
                 break;
 
             case "KnapS2K8":
-                Skaerm[1].material.CopyPropertiesFromMaterial(Kamera[8]);
+                TurnSelectedCamerasOnAndDisableTheRest(7, 1, 8);
                 break;
 
             case "KnapS2K9":
-                Skaerm[1].material.CopyPropertiesFromMaterial(Kamera[9]);
+                TurnSelectedCamerasOnAndDisableTheRest(8, 1, 9);
                 break;
 
             case "KnapS2K10":
-                Skaerm[1].material.CopyPropertiesFromMaterial(Kamera[10]);
+                TurnSelectedCamerasOnAndDisableTheRest(9, 1, 10);
                 break;
 
             case "KnapS2K11":
-                Skaerm[1].material.CopyPropertiesFromMaterial(Kamera[11]);
+                TurnSelectedCamerasOnAndDisableTheRest(10, 1, 11);
                 break;
 
             case "KnapS3K1":
-                Skaerm[2].material.CopyPropertiesFromMaterial(Kamera[1]);
+                TurnSelectedCamerasOnAndDisableTheRest(0, 2, 1);
                 break;
 
             case "KnapS3K2":
-                Skaerm[2].material.CopyPropertiesFromMaterial(Kamera[2]);
+                TurnSelectedCamerasOnAndDisableTheRest(1, 2, 2);
                 break;
 
             case "KnapS3K3":
-                Skaerm[2].material.CopyPropertiesFromMaterial(Kamera[3]);
+                TurnSelectedCamerasOnAndDisableTheRest(2, 2, 3);
                 break;
 
             case "KnapS3K4":
-                Skaerm[2].material.CopyPropertiesFromMaterial(Kamera[4]);
+                TurnSelectedCamerasOnAndDisableTheRest(3, 2, 4);
                 break;
 
             case "KnapS3K5":
-                Skaerm[2].material.CopyPropertiesFromMaterial(Kamera[5]);
+                TurnSelectedCamerasOnAndDisableTheRest(4, 2, 5);
                 break;
 
             case "KnapS3K6":
-                Skaerm[2].material.CopyPropertiesFromMaterial(Kamera[6]);
+                TurnSelectedCamerasOnAndDisableTheRest(5, 2, 6);
                 break;
 
             case "KnapS3K7":
-                Skaerm[2].material.CopyPropertiesFromMaterial(Kamera[7]);
+                TurnSelectedCamerasOnAndDisableTheRest(6, 2, 7);
                 break;
 
             case "KnapS3K8":
-                Skaerm[2].material.CopyPropertiesFromMaterial(Kamera[8]);
+                TurnSelectedCamerasOnAndDisableTheRest(7, 2, 8);
                 break;
 
             case "KnapS3K9":
-                Skaerm[2].material.CopyPropertiesFromMaterial(Kamera[9]);
+                TurnSelectedCamerasOnAndDisableTheRest(8, 2, 9);
                 break;
 
             case "KnapS3K10":
-                Skaerm[2].material.CopyPropertiesFromMaterial(Kamera[10]);
+                TurnSelectedCamerasOnAndDisableTheRest(9, 2, 10);
                 break;
 
             case "KnapS3K11":
-                Skaerm[2].material.CopyPropertiesFromMaterial(Kamera[11]);
+                TurnSelectedCamerasOnAndDisableTheRest(10, 2, 11);
                 break;
 
             case "KnapS1Sluk":
-                Skaerm[0].material.CopyPropertiesFromMaterial(Kamera[0]);
+                TurnSelectedCamerasOnAndDisableTheRest(-1, 0, 0);
                 break;
 
             case "KnapS2Sluk":
-                Skaerm[1].material.CopyPropertiesFromMaterial(Kamera[0]);
+                TurnSelectedCamerasOnAndDisableTheRest(-1, 1, 0);
                 break;
 
             case "KnapS3Sluk":
-                Skaerm[2].material.CopyPropertiesFromMaterial(Kamera[0]);
+                TurnSelectedCamerasOnAndDisableTheRest(-1, 2, 0);
                 break;
 
             default:
                 break;
         }
 
+    }
+
+    //Needs to let screens remember which camera they are showing to fix issue
+
+    void TurnSelectedCamerasOnAndDisableTheRest(int camera, int screen, int mat) // Takes the camera, screen and material and turns off all unused cameras.
+    {
+        if (camera == -1)   //for turning off screens
+        {
+            screens[screen].material.CopyPropertiesFromMaterial(materials[mat]);
+            screenLights[screen].enabled = false;
+            return;
+        }
+
+        //enabledCameras.Add(cameras[camera]);
+        queueofEnabledCameras.Enqueue(cameras[camera]);
+
+        if (queueofEnabledCameras.Count > screens.Length)
+        {
+           
+            queueofEnabledCameras.Peek().enabled = false;
+            queueofEnabledCameras.Dequeue();
+        }
+
+        cameras[camera].enabled = true;
+
+        
+
+        screenLights[screen].enabled = true;
+        screens[screen].material.CopyPropertiesFromMaterial(materials[mat]);
+    }
+
+    void TurnSelectedCamerasOnAndDisableTheRestTest(int camera, int screen, int mat) // Takes the camera, screen and material and turns off all unused cameras.
+    {
+        switch (screen)
+        {
+            case 0:
+
+                break;
+
+            case 1:
+
+                break;
+
+            case 2:
+
+                break;
+
+        }
     }
 }
