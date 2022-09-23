@@ -11,10 +11,18 @@ public class PlayerClick : MonoBehaviour // På Playeren
     public Material[] materials;
     public Renderer[] screens;
     public Camera[] cameras;
-    public List<Camera> enabledCameras = new List<Camera>();
-    public Queue<Camera> queueofEnabledCameras = new Queue<Camera>();
+   // public List<Camera> enabledCameras = new List<Camera>();
+   // public Queue<Camera> queueofEnabledCameras = new Queue<Camera>();
     public Light[] screenLights;
-    public int[] numberOfTimesCamerasAreUsed;
+    //public int[] numberOfTimesCamerasAreUsed;
+    public bool screen1On;
+    public bool screen2On;
+    public bool screen3On;
+    public Material screen1Mat;
+    public Material screen2Mat;
+    public Material screen3Mat;
+
+
     Ray ray;
     //public GameObject door;
 
@@ -209,70 +217,79 @@ public class PlayerClick : MonoBehaviour // På Playeren
     {
         if (camera == -1)   //for turning off screens
         {
+            if (screen == 0)
+            {
+                screen1On = false;
+                screen1Mat = materials[0];
+            }
+
+            if (screen == 1)
+            {
+                screen2On = false;
+                screen2Mat = materials[0];
+            }
+
+            if (screen == 2)
+            {
+                screen3On = false;
+                screen3Mat = materials[0];
+            }
+
             screens[screen].material.CopyPropertiesFromMaterial(materials[mat]);
             screenLights[screen].enabled = false;
+
             return;
         }
 
-       
-        queueofEnabledCameras.Enqueue(cameras[camera]);
-
-        if (queueofEnabledCameras.Count > screens.Length)
+        else  // saving used materials
         {
-           
-            //queueofEnabledCameras.Peek().enabled = false;
-            queueofEnabledCameras.Dequeue();
+            if (screen == 0)
+            {
+                screen1On = true;
+                screen1Mat = materials[mat];
+            }
+
+            if (screen == 1)
+            {
+                screen2On = true;
+                screen2Mat = materials[mat];
+            }
+
+            if (screen == 2)
+            {
+                screen3On = true;
+                screen3Mat = materials[mat];
+            }
+
         }
 
-        cameras[camera].enabled = true;
+        for (int i = 0; i < materials.Length; i++)  //turn off all cameras that arent used
+        {
+
+            if (materials[i] == screen1Mat || materials[i] == screen2Mat || materials[i] == screen3Mat)
+            {
+                if (i != 0)
+                {
+                    cameras[i - 1].enabled = true;
+                }
+
+                
+            }
+
+            else
+            {
+                if (i != 0)
+                {
+                    cameras[i - 1].enabled = false;
+                }
+                
+            }
+        }
+
         screenLights[screen].enabled = true;
         screens[screen].material.CopyPropertiesFromMaterial(materials[mat]);
 
 
-
-        for (int i = 0; i < cameras.Length; i++)
-        {
-            foreach (Renderer _screen in screens)
-            {
-                if (_screen.material == materials[i])
-                {
-                    cameras[i - 1].enabled = true;
-                    numberOfTimesCamerasAreUsed[i]++;
-                }
-
-                else
-                {
-                    if (numberOfTimesCamerasAreUsed[i] == 1)
-                    {
-                        numberOfTimesCamerasAreUsed[i]--;
-                        cameras[i - 1].enabled = false;
-                    }
-                }
-            }
-        }
-
         
-        
-            
-        
-    }
-
-    void TurnSelectedCamerasOnAndDisableTheRestTest(int camera, int screen, int mat) // Takes the camera, screen and material and turns off all unused cameras.
-    {
-        switch (screen)
-        {
-            case 0:
-
-                break;
-
-            case 1:
-
-                break;
-
-            case 2:
-
-                break;
-
-        }
     }
 }
