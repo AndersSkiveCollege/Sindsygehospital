@@ -14,6 +14,7 @@ public class PlayerClick : MonoBehaviour // På Playeren
     public List<Camera> enabledCameras = new List<Camera>();
     public Queue<Camera> queueofEnabledCameras = new Queue<Camera>();
     public Light[] screenLights;
+    public int[] numberOfTimesCamerasAreUsed;
     Ray ray;
     //public GameObject door;
 
@@ -32,6 +33,7 @@ public class PlayerClick : MonoBehaviour // På Playeren
     void Start()
     {
         doorController = GetComponent<DoorController>();
+        
     }
 
 
@@ -212,22 +214,47 @@ public class PlayerClick : MonoBehaviour // På Playeren
             return;
         }
 
-        //enabledCameras.Add(cameras[camera]);
+       
         queueofEnabledCameras.Enqueue(cameras[camera]);
 
         if (queueofEnabledCameras.Count > screens.Length)
         {
            
-            queueofEnabledCameras.Peek().enabled = false;
+            //queueofEnabledCameras.Peek().enabled = false;
             queueofEnabledCameras.Dequeue();
         }
 
         cameras[camera].enabled = true;
-
-        
-
         screenLights[screen].enabled = true;
         screens[screen].material.CopyPropertiesFromMaterial(materials[mat]);
+
+
+
+        for (int i = 0; i < cameras.Length; i++)
+        {
+            foreach (Renderer _screen in screens)
+            {
+                if (_screen.material == materials[i])
+                {
+                    cameras[i - 1].enabled = true;
+                    numberOfTimesCamerasAreUsed[i]++;
+                }
+
+                else
+                {
+                    if (numberOfTimesCamerasAreUsed[i] == 1)
+                    {
+                        numberOfTimesCamerasAreUsed[i]--;
+                        cameras[i - 1].enabled = false;
+                    }
+                }
+            }
+        }
+
+        
+        
+            
+        
     }
 
     void TurnSelectedCamerasOnAndDisableTheRestTest(int camera, int screen, int mat) // Takes the camera, screen and material and turns off all unused cameras.
