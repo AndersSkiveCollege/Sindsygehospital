@@ -18,9 +18,14 @@ public class PlayerClick : MonoBehaviour // På Playeren
     public bool screen1On;
     public bool screen2On;
     public bool screen3On;
+    public bool noCamSelectedScreen1;
+    public bool noCamSelectedScreen2;
+    public bool noCamSelectedScreen3;
     public Material screen1Mat;
     public Material screen2Mat;
     public Material screen3Mat;
+    public Material noSignal;
+
 
 
     Ray ray;
@@ -41,7 +46,10 @@ public class PlayerClick : MonoBehaviour // På Playeren
     void Start()
     {
         doorController = GetComponent<DoorController>();
-        
+        noCamSelectedScreen1 = true;
+        noCamSelectedScreen2 = true;
+        noCamSelectedScreen3 = true;
+
     }
 
 
@@ -219,24 +227,91 @@ public class PlayerClick : MonoBehaviour // På Playeren
         {
             if (screen == 0)
             {
-                screen1On = false;
-                screen1Mat = materials[0];
+                if (screen1On == true)
+                {
+                    print("screenOn");
+                    screen1On = false;
+                    screenLights[screen].enabled = false;
+                    //screen1Mat = materials[0];
+                    screens[screen].material.CopyPropertiesFromMaterial(materials[0]);
+                    return;
+                }
+
+                else
+                {
+                    screen1On = true;
+                    screenLights[screen].enabled = true;
+                    if (noCamSelectedScreen1 == true)
+                    {
+                        print("Screen Off NoCamSelected");
+                        screens[screen].material.CopyPropertiesFromMaterial(noSignal);
+                    }
+                    else
+                    {
+                        print("Screen Off CamSelected");
+                        screens[screen].material.CopyPropertiesFromMaterial(screen1Mat);
+                    }
+                    
+                }
             }
 
             if (screen == 1)
             {
-                screen2On = false;
-                screen2Mat = materials[0];
+                if (screen2On == true)
+                {
+                    screen2On = false;
+                    screenLights[screen].enabled = false;
+                    //screen2Mat = materials[0];
+                    screens[screen].material.CopyPropertiesFromMaterial(materials[0]);
+                    return;
+                }
+
+                else
+                {
+                    screen2On = true;
+                    screenLights[screen].enabled = true;
+                    if (noCamSelectedScreen2 == true)
+                    {
+                        screens[screen].material.CopyPropertiesFromMaterial(noSignal);
+                    }
+                    else
+                    {
+                        screens[screen].material.CopyPropertiesFromMaterial(screen2Mat);
+                    }
+                    
+                }
             }
 
             if (screen == 2)
             {
-                screen3On = false;
-                screen3Mat = materials[0];
+                if (screen3On == true)
+                {
+                    screen3On = false;
+                    screenLights[screen].enabled = false;
+                    //screen3Mat = materials[0];
+                    screens[screen].material.CopyPropertiesFromMaterial(materials[0]);
+                    return;
+                }
+
+                else
+                {
+
+                    screen3On = true;
+                    screenLights[screen].enabled = true;
+                    if (noCamSelectedScreen3 == true)
+                    {
+                        screens[screen].material.CopyPropertiesFromMaterial(noSignal);
+                    }
+                    else
+                    {
+                        screens[screen].material.CopyPropertiesFromMaterial(screen3Mat);
+                    }
+                    
+                }
             }
 
-            screens[screen].material.CopyPropertiesFromMaterial(materials[mat]);
-            screenLights[screen].enabled = false;
+            
+            
 
             return;
         }
@@ -245,18 +320,21 @@ public class PlayerClick : MonoBehaviour // På Playeren
         {
             if (screen == 0)
             {
+                noCamSelectedScreen1 = false;
                 screen1On = true;
                 screen1Mat = materials[mat];
             }
 
             if (screen == 1)
             {
+                noCamSelectedScreen2 = false;
                 screen2On = true;
                 screen2Mat = materials[mat];
             }
 
             if (screen == 2)
             {
+                noCamSelectedScreen3 = false;
                 screen3On = true;
                 screen3Mat = materials[mat];
             }
