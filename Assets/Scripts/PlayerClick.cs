@@ -56,6 +56,7 @@ public class PlayerClick : MonoBehaviour // På Playeren
 
     void OnClick()
     {
+        print("clicked");
         RaycastHit hit;
         ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         if (Physics.Raycast(ray, out hit))
@@ -70,6 +71,7 @@ public class PlayerClick : MonoBehaviour // På Playeren
         switch (hit.collider.gameObject.name)
         {
             case "KnapS1K1":
+                print("clicked button 1");
                 TurnSelectedCamerasOnAndDisableTheRest(0,0,1);
                 break;
 
@@ -320,6 +322,7 @@ public class PlayerClick : MonoBehaviour // På Playeren
         {
             if (screen == 0)
             {
+                print("screen turning on");
                 noCamSelectedScreen1 = false;
                 screen1On = true;
                 screen1Mat = materials[mat];
@@ -348,6 +351,7 @@ public class PlayerClick : MonoBehaviour // På Playeren
             {
                 if (i != 0)
                 {
+                    print(i);
                     cameras[i - 1].enabled = true;
                 }
 

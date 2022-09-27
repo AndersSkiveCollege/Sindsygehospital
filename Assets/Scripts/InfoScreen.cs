@@ -13,7 +13,7 @@ public class InfoScreen : MonoBehaviour
     void Start()
     {
         // Laver en Coroutine som skifter farve
-        StartCoroutine(ManyColors());
+       // StartCoroutine(ManyColors());     DEAKTIVERET PGA FEJL
     }
 
     IEnumerator ManyColors()
