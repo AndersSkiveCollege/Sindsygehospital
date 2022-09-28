@@ -212,18 +212,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6070772379033159591, guid: d58646895e5015243853c60320332da4,
         type: 3}
+      propertyPath: m_Carve
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070772379033159591, guid: d58646895e5015243853c60320332da4,
+        type: 3}
       propertyPath: m_Extents.x
-      value: 2.08
+      value: 1.36
       objectReference: {fileID: 0}
     - target: {fileID: 6070772379033159591, guid: d58646895e5015243853c60320332da4,
         type: 3}
       propertyPath: m_Extents.y
-      value: 2.99
+      value: 2.46
       objectReference: {fileID: 0}
     - target: {fileID: 6070772379033159591, guid: d58646895e5015243853c60320332da4,
         type: 3}
       propertyPath: m_Extents.z
-      value: 0.835
+      value: 0.345
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070772379033159591, guid: d58646895e5015243853c60320332da4,
+        type: 3}
+      propertyPath: m_TimeToStationary
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d58646895e5015243853c60320332da4, type: 3}

@@ -18,7 +18,11 @@ public class DoorController : MonoBehaviour // På Playeren
             var obj = doorObjs[i];
 
             var door = obj.GetComponent<DoorToggle>();
-            door.id = door.name[11] - '0';
+            int digit1 = door.name[11] - '0';
+            int digit2 = door.name[12] - '0';
+            int bothDigits = int.Parse(digit1.ToString() + digit2.ToString());
+
+            door.id = bothDigits;
 
             if (door != null)
                 doors[door.id] = door;

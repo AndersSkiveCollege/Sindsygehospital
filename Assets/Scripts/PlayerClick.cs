@@ -63,7 +63,10 @@ public class PlayerClick : MonoBehaviour // På Playeren
         {
             if (hit.collider.gameObject.tag == "Button")
             {
-                doorController.ToggleDoor(hit.collider.gameObject.name[6] - '0');
+                int digit1 = hit.collider.gameObject.name[6] - '0';
+                int digit2 = hit.collider.gameObject.name[7] - '0';
+                int doorNr = int.Parse(digit1.ToString() + digit2.ToString());
+                doorController.ToggleDoor(doorNr);
                 //door.SetActive(false);
             }
         }
