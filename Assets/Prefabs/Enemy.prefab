@@ -136,10 +136,11 @@ MonoBehaviour:
   minStillTime: 3
   maxStillTime: 5
   timeBetweenAttacks: 2
-  sightRange: 9999
+  sightRange: 10
   attackRange: 0.7
   playerInSightRange: 0
   playerInAttackRange: 0
+  myState: 0
   manSkin: {fileID: 6254811719291875546}
 --- !u!64 &6254811721100295086
 MeshCollider:

@@ -35,9 +35,9 @@ public class EnemyAI : MonoBehaviour
     //switch
 
     public enum states
-        {
+    {
         patrol, chase, attack
-        }
+    }
     public states myState = new states();
 
     //damage
@@ -97,6 +97,7 @@ public class EnemyAI : MonoBehaviour
 
     private void patroling()
     {
+        agent.speed = 5;
         anim.SetInteger("Movement", 1);
         //walk to walkpoint
         if (!walkPointSet)
@@ -133,12 +134,14 @@ public class EnemyAI : MonoBehaviour
     }
     private void chasePlayer()
     {
+        agent.speed = 12;
         //placing destination to the player
         agent.SetDestination(player.position);
         anim.SetInteger("Movement", 1);
     }
     private void attackPlayer()
     {
+        agent.speed = 12;
         //stopping up and attacking
         agent.SetDestination(transform.position);
         anim.SetInteger("Movement", 0);
