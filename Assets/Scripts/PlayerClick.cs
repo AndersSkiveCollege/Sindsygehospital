@@ -25,6 +25,7 @@ public class PlayerClick : MonoBehaviour // På Playeren
     public Material screen2Mat;
     public Material screen3Mat;
     public Material noSignal;
+    public bool isThereAnyPower;
 
 
 
@@ -45,10 +46,12 @@ public class PlayerClick : MonoBehaviour // På Playeren
 
     void Start()
     {
+        isThereAnyPower = true;
         doorController = GetComponent<DoorController>();
         noCamSelectedScreen1 = true;
         noCamSelectedScreen2 = true;
         noCamSelectedScreen3 = true;
+
 
     }
 
@@ -56,7 +59,14 @@ public class PlayerClick : MonoBehaviour // På Playeren
 
     void OnClick()
     {
-        print("clicked");
+        //print("clicked");
+
+        if (isThereAnyPower == false)
+        {
+            print("You clicked but there is no power so nothing happens");
+            return;
+        }
+
         RaycastHit hit;
         ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         if (Physics.Raycast(ray, out hit))
@@ -226,8 +236,8 @@ public class PlayerClick : MonoBehaviour // På Playeren
 
     //Needs to let screens remember which camera they are showing to fix issue
 
-    void TurnSelectedCamerasOnAndDisableTheRest(int camera, int screen, int mat) // Takes the camera, screen and material and turns off all unused cameras.
-    {
+   public void TurnSelectedCamerasOnAndDisableTheRest(int camera, int screen, int mat) // Takes the camera, screen and material and turns off all unused cameras.
+   {
         if (camera == -1)   //for turning off screens
         {
             if (screen == 0)
@@ -376,5 +386,5 @@ public class PlayerClick : MonoBehaviour // På Playeren
 
 
         
-    }
+   }
 }

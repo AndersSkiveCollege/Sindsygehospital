@@ -134,14 +134,14 @@ public class EnemyAI : MonoBehaviour
     }
     private void chasePlayer()
     {
-        agent.speed = 12;
+        agent.speed = 9;
         //placing destination to the player
         agent.SetDestination(player.position);
         anim.SetInteger("Movement", 1);
     }
     private void attackPlayer()
     {
-        agent.speed = 12;
+        agent.speed = 15;
         //stopping up and attacking
         agent.SetDestination(transform.position);
         anim.SetInteger("Movement", 0);
