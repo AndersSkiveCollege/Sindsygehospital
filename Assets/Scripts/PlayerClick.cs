@@ -387,4 +387,17 @@ public class PlayerClick : MonoBehaviour // På Playeren
 
         
    }
+
+    public void PowerWentOff()
+    {
+        screen1On = false;
+        screen2On = false;
+        screen3On = false;
+        screenLights[0].enabled = false;
+        screenLights[1].enabled = false;
+        screenLights[2].enabled = false;
+        screens[0].material.CopyPropertiesFromMaterial(materials[0]);
+        screens[1].material.CopyPropertiesFromMaterial(materials[0]);
+        screens[2].material.CopyPropertiesFromMaterial(materials[0]);
+    }
 }
