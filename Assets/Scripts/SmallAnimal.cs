@@ -9,7 +9,7 @@ public class SmallAnimal : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("Wonder",1,1 );
+        InvokeRepeating("Wonder", 1, Random.Range(0.5f,2f));
     }
 
     void Wonder() //method found online
