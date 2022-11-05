@@ -103,7 +103,7 @@ NavMeshAgent:
   m_Acceleration: 12
   avoidancePriority: 50
   m_AngularSpeed: 400
-  m_StoppingDistance: 0.5
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -189,9 +189,9 @@ MonoBehaviour:
   manSkin: {fileID: 6254811719291875546}
   wondering: 0
   wonderMaxStandStillTime: 6
-  wonderMinStandStillTime: 5
-  wonderMinWalkRange: 3
-  wonderMaxWalkRange: 20
+  wonderMinStandStillTime: 2
+  wonderMinWalkRange: 6
+  wonderMaxWalkRange: 12
   myState: 0
 --- !u!1001 &6254811719291784146
 PrefabInstance:
@@ -214,15 +214,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 427610, guid: 1d3b1a1513de66247974634911345b98, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.09
       objectReference: {fileID: 0}
     - target: {fileID: 427610, guid: 1d3b1a1513de66247974634911345b98, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.09
       objectReference: {fileID: 0}
     - target: {fileID: 427610, guid: 1d3b1a1513de66247974634911345b98, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 1.09
       objectReference: {fileID: 0}
     - target: {fileID: 427610, guid: 1d3b1a1513de66247974634911345b98, type: 3}
       propertyPath: m_LocalPosition.x
@@ -230,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 427610, guid: 1d3b1a1513de66247974634911345b98, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.089
+      value: -1.072
       objectReference: {fileID: 0}
     - target: {fileID: 427610, guid: 1d3b1a1513de66247974634911345b98, type: 3}
       propertyPath: m_LocalPosition.z
@@ -263,6 +263,10 @@ PrefabInstance:
     - target: {fileID: 427610, guid: 1d3b1a1513de66247974634911345b98, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 427610, guid: 1d3b1a1513de66247974634911345b98, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9526514, guid: 1d3b1a1513de66247974634911345b98, type: 3}
       propertyPath: m_Controller

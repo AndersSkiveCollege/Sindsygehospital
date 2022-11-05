@@ -50,7 +50,7 @@ public class PowerHandler : MonoBehaviour
 
     void ChanceToStartRandomPowerFluctuation()
     {
-        print(fluctuationChance / power);
+        //print(fluctuationChance / power);
         if (powerOff || powerFluctuating == true)
         {
             return;
@@ -250,7 +250,7 @@ public class PowerHandler : MonoBehaviour
 
     IEnumerator FastPowerFluctuation()
     {
-        print("fast fluctuations in power");
+        //print("fast fluctuations in power");
         int numberOfFluctuations = Random.Range(1,3);
         powerFluctuating = true;
         float lightIntensity = 1;
@@ -322,7 +322,7 @@ public class PowerHandler : MonoBehaviour
 
     IEnumerator SlowPowerFluctuation()
     {
-        print("slow fluctuations in power");
+        //print("slow fluctuations in power");
         powerFluctuating = true;
         float lightIntensity = 1;
         int lightCounter = 0;
