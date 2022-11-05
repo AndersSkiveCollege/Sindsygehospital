@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6254811721100295082}
   - component: {fileID: 6254811721100295086}
   - component: {fileID: 6254811721100295087}
+  - component: {fileID: 533841374552031627}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -117,7 +118,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6254811721100295080}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 130cfbcb4a8a79c44bd2c90379bf8f15, type: 3}
   m_Name: 
@@ -172,6 +173,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &533841374552031627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6254811721100295080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0103ff9d61b3fe45a656dd755b59483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  manSkin: {fileID: 6254811719291875546}
+  wondering: 0
+  wonderMaxStandStillTime: 6
+  wonderMinStandStillTime: 5
+  wonderMinWalkRange: 3
+  wonderMaxWalkRange: 20
+  myState: 0
 --- !u!1001 &6254811719291784146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -209,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 427610, guid: 1d3b1a1513de66247974634911345b98, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.089
       objectReference: {fileID: 0}
     - target: {fileID: 427610, guid: 1d3b1a1513de66247974634911345b98, type: 3}
       propertyPath: m_LocalPosition.z
