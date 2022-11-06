@@ -382,6 +382,7 @@ public class PowerHandler : MonoBehaviour
 
     void PowerOff() 
     {
+        print("power off");
         powerOff = true;
         playerClick.isThereAnyPower = false;
         playerClick.PowerWentOff();
@@ -409,7 +410,7 @@ public class PowerHandler : MonoBehaviour
 
         while (lightEmitterMat.GetColor("_EmissionColor").r > 0.001 || lightEmitterMat.GetColor("_EmissionColor").g > 0.001 || lightEmitterMat.GetColor("_EmissionColor").b > 0.001)
         {
-            emissionColor = emissionColor * 0.98f;
+            emissionColor = emissionColor * 0.995f;
             lightEmitterMat.SetColor("_EmissionColor", emissionColor);
             lightEmitterMatCopy.SetColor("_EmissionColor", emissionColor);
 

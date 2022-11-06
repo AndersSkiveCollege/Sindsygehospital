@@ -100,7 +100,7 @@ public class AIEnemyFinal : MonoBehaviour
             {
                 float wonderRadius = Random.Range(wonderMinWalkRange, wonderMaxWalkRange);                  //random float
                 Vector3 randomDirection = Random.insideUnitSphere * wonderRadius;                           //random position around agent
-                randomDirection += transform.position;
+                randomDirection += transform.position + transform.forward * 0.25f;                          //random point + agent position + 1/4 of the search radius forward. this will make the agent prefer moving forward
                 NavMeshHit hit;
 
                 if (NavMesh.SamplePosition(randomDirection, out hit, 1, NavMesh.AllAreas) == true)          //finds the closest navmesh point to the randomDirection float within 1 unit of the point and returns false if no point exists
@@ -113,8 +113,7 @@ public class AIEnemyFinal : MonoBehaviour
                 else
                 {
                     print("no point in range on navmesh");
-                }
-                
+                }              
             }
 
             agent.SetDestination(finalPosition);

@@ -189,8 +189,8 @@ MonoBehaviour:
   manSkin: {fileID: 6254811719291875546}
   wondering: 0
   wonderMaxStandStillTime: 6
-  wonderMinStandStillTime: 2
-  wonderMinWalkRange: 6
+  wonderMinStandStillTime: 0.5
+  wonderMinWalkRange: 1
   wonderMaxWalkRange: 12
   myState: 0
 --- !u!1001 &6254811719291784146
