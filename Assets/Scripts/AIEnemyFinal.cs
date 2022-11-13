@@ -6,14 +6,19 @@ using UnityEngine.AI;
 public class AIEnemyFinal : MonoBehaviour
 {
     public NavMeshAgent agent;
+    public GameObject eyes;
     Transform player;
     public GameObject manSkin;
+    public GameObject indicator;
     Animator anim;
     public bool wondering;
     public float wonderMaxStandStillTime;
     public float wonderMinStandStillTime;
     public float wonderMinWalkRange;
     public float wonderMaxWalkRange;
+    public bool playerInVisionRegion;                           //is player inside vision trigger
+    public float sightDistance;
+    public LayerMask sightLayerMask;
 
 
     public enum states
@@ -31,6 +36,9 @@ public class AIEnemyFinal : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         anim = manSkin.GetComponent<Animator>();
         myState = states.wonder;
+        indicator = Instantiate(indicator, new Vector3 (0,0,0), Quaternion.identity);
+        StartCoroutine("CheckIfPlayerIsVisible");
+        
     }
 
     
@@ -65,6 +73,15 @@ public class AIEnemyFinal : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            GameObject.Find("GameController").GetComponent<GameController>().ResetLevel();
+        }
+        
+    }
+
     void Search()
     {
 
@@ -72,7 +89,18 @@ public class AIEnemyFinal : MonoBehaviour
 
     void Chase()
     {
+        agent.speed = 8;
+        agent.acceleration = 35;
+        agent.angularSpeed = 1000;
+        anim.speed = 1f;
 
+        if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name != "BasicMotions@Sprint01 - Forwards")
+        {
+            print(anim.GetCurrentAnimatorClipInfo(0)[0].clip.name);
+            anim.SetTrigger("Sprint");
+        }
+        
+        agent.SetDestination(player.position);
     }
 
     void Attack()
@@ -89,6 +117,9 @@ public class AIEnemyFinal : MonoBehaviour
     {
         wondering = true;                                                                                   //bool for only running the coroutine once at a time
         agent.speed = 1.2f;
+        agent.acceleration = 12;
+        agent.angularSpeed = 200;
+        anim.speed = 0.57f;
 
         while (myState == states.wonder)                                                        
         {
@@ -107,43 +138,82 @@ public class AIEnemyFinal : MonoBehaviour
                 {
                     finalPosition = hit.position;                                                           //if a point exists, it is saved here
                     navMeshPointFound = true;                                                               //bool set to true if point is found, taking us out of the while loop
-                    print("found point on navmesh");
+                    //print("found point on navmesh");
+                    
                 }
 
                 else
                 {
-                    print("no point in range on navmesh");
+                    //print("no point in range on navmesh");
                 }              
             }
 
             agent.SetDestination(finalPosition);
-            print("position set");
+            indicator.transform.position = finalPosition;
+            //print("position set");
 
             while (agent.remainingDistance == 0)                                                            //it takes navmesh a little time to find a path to the target destination. during this time navmesh thinks the distance to the target is 0. Thats why I have this while loop.
             {
-                print("calculating path");
+                //print("calculating path");
                 yield return new WaitForSecondsRealtime(0.1f);
             }
 
-            print($"path found. distace: {agent.remainingDistance}");
-
+            anim.SetTrigger("Walk");
+            //print($"path found. distace: {agent.remainingDistance}");
+            
             while (agent.remainingDistance > 0.01f)
             {
-                if (anim.GetInteger("Movement") != 1)
-                {
-                    print("set integer to 1");
-                    anim.SetInteger("Movement", 1);
-                }
 
-                print($"moving. remaining distance: {agent.remainingDistance}");
+
+                
+                
+
+                //print($"moving. remaining distance: {agent.remainingDistance}");
                 yield return new WaitForSecondsRealtime(0.2f);
             }
 
-            anim.SetInteger("Movement", 0);
-            print("standing still");
+            anim.SetTrigger("Idle");
+            //print("standing still");
             yield return new WaitForSecondsRealtime(Random.Range(wonderMinStandStillTime,wonderMaxStandStillTime));
         }
 
         wondering = false;
+    }
+
+    IEnumerator CheckIfPlayerIsVisible()
+    {
+        float checkDelay = 1;
+
+        while (true)
+        {
+            if (playerInVisionRegion)
+            {
+                
+                RaycastHit hit;
+                Physics.Raycast(eyes.transform.position, player.position + new Vector3(0,1,0) - eyes.transform.position, out hit,  sightDistance, sightLayerMask, QueryTriggerInteraction.Ignore);
+                Debug.DrawRay(eyes.transform.position, (player.position + new Vector3(0, 1, 0) - eyes.transform.position) * hit.distance, Color.yellow);
+                Debug.Log("Did Hit");
+                print(hit.collider.name);
+
+                if (hit.collider.transform.root.tag == "Player")
+                {
+                    Debug.Log("I see the player");
+
+                    if (myState != states.chase)
+                    {
+                        myState = states.chase;
+                    }
+                }
+
+                checkDelay = 0.2f;
+            }
+
+            else
+            {
+                checkDelay = 1;
+            }
+
+            yield return new WaitForSecondsRealtime(checkDelay);
+        }
     }
 }
